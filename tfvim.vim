@@ -85,15 +85,13 @@ function! s:TerraformJumpDefinition()
 
   let grepRes = ''
   let f = ''
-  for m in split(system('ls *.tf ' . dir), '\n')
+  for m in split(system('ls ' . dir . '/*.tf'), '\n')
     let grepRes = system(grepCmd . ' ' . m)
     if grepRes !=# ''
       let matchFile = m
       break
     endif
   endfor
-
-  echo grepCmd
 
   let rs = split(grepRes, ':')  " [line_number, match]
 
