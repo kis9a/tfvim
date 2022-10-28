@@ -1,3 +1,11 @@
+" flags
+let s:save_cpo = &cpo
+set cpo&vim
+
+if exists('g:loaded_tfvim_plugin') && g:loaded_tfvim_plugin
+  finish
+endif
+
 " helper
 function! s:charToCol()
   if strlen(s:charCol()) ==# 3
@@ -152,3 +160,7 @@ function! s:tfref()
 endfunction
 
 command! TFRef call <SID>tfref()
+
+" end flags
+let &cpo = s:save_cpo
+let loaded_tfvim_plugin = 1
